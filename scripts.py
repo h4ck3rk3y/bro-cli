@@ -1,0 +1,4 @@
+#
+
+zsh = """command_not_found_handler () { runcnf=1; retval=127; [ ! -S /var/run/dbus/system_bus_socket ] && runcnf=0; [ ! -x /usr/libexec/packagekitd ] && runcnf=0; if [ $runcnf -eq 1 ]; then /usr/libexec/pk-command-not-found $@; retval=$?; else echo "bash: $1: command not found"; fi; #return $retval }"""
+bash = """command_not_found_handle () { runcnf=1; retval=127; [ ! -S /var/run/dbus/system_bus_socket ] && runcnf=0; [ ! -x /usr/libexec/packagekitd ] && runcnf=0; if [ $runcnf -eq 1 ]; then /usr/libexec/pk-command-not-found $@; retval=$?; else echo "bash: $1: command not found"; fi; return $retval }"""
